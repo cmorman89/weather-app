@@ -7,3 +7,9 @@ Uses the OpenWeatherAPI
 1. Clone the repo.
 2. Install dependencies: `pip install flask`.
 3. Run the app: `python demo.py`.
+
+## License
+
+## Contact
+
+github@cmorman.com
