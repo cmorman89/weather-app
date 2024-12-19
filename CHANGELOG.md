@@ -13,5 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 [UNRELEASED]
 ### Added
-- Implement basic Flask backend with a "Success" homepage.
-- Set up project structure (README.md, CHANGELOG.md)
+- Implement basic Flask backend.
+- Basic HTML frontend with a form to submit a city name.
+- Basic HTML template to display weather data.
+- Integration with OpenWeatherMap API to fetch current weather data.
+- Set up project structure (README.md, CHANGELOG.md, requirements.txt)
+- Document setup and usage instructions in README.md
