@@ -1,7 +1,7 @@
 # Weather App Demo
 
-This app will fetch the current weather (temperature, humidity, precipitation) for a given location.
-Uses the [OpenWeatherMap](https://home.openweathermap.org/) API as the data source.
+A small, demo app that fetches and displays real-time weather data for a specified city.
+- Uses the [OpenWeatherMap](https://home.openweathermap.org/) API as the data source.
 
 ---
 
