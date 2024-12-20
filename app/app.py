@@ -1,6 +1,6 @@
 import requests
 import os
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 from dotenv import load_dotenv
 
 
@@ -31,6 +31,9 @@ def home():
         else:
             error = f"City '{city}' not found. Please try again."
 
+    if app.config.get("TESTING"):
+        return jsonify(weather=weather, error=error)
+    
     return render_template("home.html", weather=weather, error=error)
 
 
