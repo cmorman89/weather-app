@@ -9,6 +9,7 @@ A small, demo app that fetches and displays real-time weather data for a specifi
   - [About](#about)
   - [Setup](#setup)
   - [Usage](#usage)
+  - [Release Notes](#release-notes)
   - [Demo](#demo)
   - [Contact](#contact)
 
@@ -56,6 +57,20 @@ Built with Flask, this project showcases how to interact with a third-party REST
 ## Usage
 1. Navigate to http://127.0.0.1:5000
 2. Enter the target city and click "Get Weather"
+
+---
+
+## Release Notes
+
+- ### [v1.0] - 2024-12-19
+  - #### Added
+    - Unit tests for the backend API calls (mocked).
+    - Implement basic Flask backend.
+    - Basic HTML frontend with a form to submit a city name.
+    - Basic HTML template to display weather data.
+    - Integration with OpenWeatherMap API to fetch current weather data.
+    - Set up project structure (README.md, CHANGELOG.md, requirements.txt)
+    - Document setup and usage instructions in README.md
 
 ---
 

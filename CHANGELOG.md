@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 ### Removed
 -->
 
-[UNRELEASED]
+[v1.0] - 2024-12-19
 ### Added
 - Unit tests for the backend API calls (mocked).
 - Implement basic Flask backend.
