@@ -1,0 +1,6 @@
+black
+flask
+pytest
+python-dotenv
+requests
+requests-mock

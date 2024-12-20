@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo Weather App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <div class="card col-md-4">
+        <div class="card-header bg-dark text-white">
+            <p style="font-size: xx-large">Demo: Weather App</span></p>
+        </div>
+        <form method="POST" action="/">
+        <div class="card-body d-flex flex-column">
+            <div class="d-flex flex-column">
+                <div>
+                    <label for="city">Enter a city to lookup the weather:</label>
+                </div>
+                <div class="d-flex flex-row">
+                    <input type="text" name="city" class="form-control" placeholder="Enter city name" required>
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+            {% if error %}
+                <div class="card alert alert-danger">
+                    <p>{{error}}</p>
+                </div>
+            {% endif %}
+            <div class="mt-3 d-flex flex-column" style="font-size: small">
+                <p sty >Note: Enter only the city name, not the state or country.</p>
+                <hr>
+                <p class="text-center" style="font-size: small">Powered by <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a></p>
+            </div>
+        </div>
+    </form>
+    </div>
+    {% if weather %}
+        <div class="card mt-5 col-md-4">
+            <div class="card-header d-flex flex-column justify-content-center bg-dark text-white ">
+                <p style="font-size: xx-large">{{weather.city}} Weather</p>
+            </div>
+            <div class="card-body d-flex flex-row">
+                <div class="d-flex flex-column">
+                    <img class="" src="https://openweathermap.org/img/wn/{{weather.icon}}@4x.png" alt="Weather Icon" class="card-img-top">
+                </div>
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-row justify-content-center">
+                        <p style="font-size: 60px">{{weather.temperature}}</p><p style="font-size: medium; padding-top: 20px;">°F</p>
+                    </div>
+                    <ul>
+                        <li>Conditions: {{weather.description}}</li>
+                        <li>Humidity: {{weather.humidity}}%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</body>
+</html>
