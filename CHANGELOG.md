@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 [UNRELEASED]
 ### Added
+- Unit tests for the backend API calls (mocked).
 - Implement basic Flask backend.
 - Basic HTML frontend with a form to submit a city name.
 - Basic HTML template to display weather data.
