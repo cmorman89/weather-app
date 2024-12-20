@@ -1,3 +1,4 @@
+black
 flask
 pytest
 python-dotenv
