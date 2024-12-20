@@ -1,14 +1,24 @@
 # Weather App Demo
 
 This app will fetch the current weather (temperature, humidity, precipitation) for a given location.
-Uses the OpenWeatherMap API to fetch 
+Uses the [OpenWeatherMap](https://home.openweathermap.org/) API as the data source.
 
 ---
 
 - [Weather App Demo](#weather-app-demo)
+  - [About](#about)
   - [Setup](#setup)
   - [Usage](#usage)
+  - [Demo](#demo)
   - [Contact](#contact)
+
+---
+
+## About
+
+This project demonstrates a basic Flask web application that retrieves real-time weather data from the OpenWeatherMap API. The app features a single page with a form where users can input a city name. Upon submission, the app fetches and displays the current weather data for the specified city.
+
+Built with Flask, this project showcases how to interact with a third-party RESTful API to fetch and process data. The frontend is created using HTML and Jinja templating, while the backend handles the API requests and data display.
 
 ---
 
@@ -46,6 +56,19 @@ Uses the OpenWeatherMap API to fetch
 ## Usage
 1. Navigate to http://127.0.0.1:5000
 2. Enter the target city and click "Get Weather"
+
+---
+
+## Demo
+
+Successful searches pull up the current weather data for the target city and an icon representing the current weather conditions.
+
+![demo-city-example-1](docs/readme_assets/image.png)
+![demo-city-example-2](docs/readme_assets/image-1.png)
+
+Unsuccessful searches will display an error message.
+
+![demo-error-1](docs/readme_assets/image-2.png)
 
 ---
 

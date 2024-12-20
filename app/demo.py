@@ -22,7 +22,8 @@ def home():
             data = response.json()
             weather = {
                 "city": city.title(),
-                "temperature": data["main"]["temp"],
+                "temperature": round(data["main"]["temp"]),
+                "icon": data["weather"][0]["icon"],
                 "type": data["weather"][0]["main"].title(),
                 "description": data["weather"][0]["description"].title(),
                 "humidity": data["main"]["humidity"],
