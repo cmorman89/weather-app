@@ -2,57 +2,87 @@
 <html>
 <head>
     <title>Demo Weather App</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#df8a57">
+    <link href="../static/css/output.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  </head>
 </head>
-<body class="container mt-5">
-    <div class="card col-md-4">
-        <div class="card-header bg-dark text-white">
-            <p style="font-size: xx-large">Demo: Weather App</span></p>
-        </div>
-        <form method="POST" action="/">
-        <div class="card-body d-flex flex-column">
-            <div class="d-flex flex-column">
+<body class="min-h-screen max-h-screen text-amber-950 bg-gradient-to-br from-orange-300 to-red-300 flex items-center justify-center">
+
+    <!-- Weather UI -->
+    <div class="relative w-80 text-right my-auto mx-auto">
+        {% if weather %}
+            <!-- Card -->
+            <!-- Weather Icon -->
+            <img class="absolute z-20 -top-20 -left-20" src="https://openweathermap.org/img/wn/{{weather.icon}}@4x.png" alt="Weather Icon">
+            <!-- Card Header -->
+            <div class="relative z-10 h-12 bg-amber-700/40 backdrop-blur-lg rounded-t-xl shadow-lg pl-8 flex items-center justify-center">
+                <!-- Weather Location -->
+            <h1 class="text-2xl font-bold">{{weather.city}},<span class="text-xl italic mb-4 font-normal"> AZ</span></h2>
+            </div>
+            <!-- Card Body -->
+            <div class="w-80 p-6 text-amber-950 bg-white/30 backdrop-blur-lg rounded-b-xl shadow-lg items-center justify-center text-center">
+                <!-- Temperature -->
                 <div>
-                    <label for="city">Enter a city to lookup the weather:</label>
+                    <h2 class="text-9xl font-bold ml-4">{{weather.temperature}}<span class="relative text-4xl text-amber-900 -top-14">°F</span></h2>
                 </div>
-                <div class="d-flex flex-row">
-                    <input type="text" name="city" class="form-control" placeholder="Enter city name" required>
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </div>
+                <!-- Divider -->
+                <div class="h-1 w-1/3 bg-amber-700 mx-auto"></div> 
+                <!-- Weather Details -->
+                <p class="text-inherit/80 mt-2 text-lg">
+                    {{weather.description}}
+                </p>
+                <p class="text-inherit/60 text-sm italic mb-2">
+                    Humidity: {{weather.humidity}}%
+                </p>
             </div>
-            {% if error %}
-                <div class="card alert alert-danger">
-                    <p>{{error}}</p>
-                </div>
-            {% endif %}
-            <div class="mt-3 d-flex flex-column" style="font-size: small">
-                <p sty >Note: Enter only the city name, not the state or country.</p>
-                <hr>
-                <p class="text-center" style="font-size: small">Powered by <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a></p>
-            </div>
+        {% endif %}
+        <!-- Search Box -->
+        {% if not weather %}
+        <div class="w-80 -mb-5 text-left flex items-center justify-center">
+            <h2 class="text-3xl">Search the <span class="font-bold italic">Weather</span></h2>
         </div>
-    </form>
+        {% endif %}
+        <div class="w-80 mt-10 text-left flex items-center justify-center">
+            <form method="POST" action="/" class="flex">
+                <input type="text" name="city" placeholder="Enter a city" class="grow shrink p-2 mr-1 italic placeholder-amber-950 bg-amber-700/40 rounded-lg hover:bg-amber-500/30 shadow-sm" required>
+                <button type="submit" class="shrink px-4 py-2 bg-amber-700/40 rounded-lg hover:bg-amber-500/30 shadow-sm font-bold">
+                    Search
+                </button>
+            </form>
+        </div>
+        {% if error %}
+        City not found. Please enter only the city name.
+        {% endif %}
     </div>
-    {% if weather %}
-        <div class="card mt-5 col-md-4">
-            <div class="card-header d-flex flex-column justify-content-center bg-dark text-white ">
-                <p style="font-size: xx-large">{{weather.city}} Weather</p>
-            </div>
-            <div class="card-body d-flex flex-row">
-                <div class="d-flex flex-column">
-                    <img class="" src="https://openweathermap.org/img/wn/{{weather.icon}}@4x.png" alt="Weather Icon" class="card-img-top">
-                </div>
-                <div class="d-flex flex-column">
-                    <div class="d-flex flex-row justify-content-center">
-                        <p style="font-size: 60px">{{weather.temperature}}</p><p style="font-size: medium; padding-top: 20px;">°F</p>
-                    </div>
-                    <ul>
-                        <li>Conditions: {{weather.description}}</li>
-                        <li>Humidity: {{weather.humidity}}%</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- Footer -->
+    <div class="absolute text-center bottom-0 m-5">
+        <p>Developed by Charles Morman © 2024</p>
+        <div class="flex space-x-4 justify-center p-2">
+            <!-- GitHub -->
+            <a href="https://github.com/cmorman89" target="_blank" class="hover:text-gray-900">
+                <i class="fab fa-github w-8 h-8 text-xl"></i>
+            </a>
+        
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/charlesmorman" target="_blank" class="hover:text-gray-900">
+                <i class="fab fa-linkedin w-8 h-8 text-xl"></i>
+            </a>
+        
+            <!-- Website -->
+            <a href="https://www.github.io/cmorman89" target="_blank" class="hover:text-gray-900">
+                <i class="fas fa-globe w-8 h-8 text-xl"></i>
+            </a>
+        
+            <!-- Email -->
+            <a href="mailto:developer@cmorman.com" class="hover:text-gray-900">
+                <i class="fas fa-envelope w-8 h-8 text-xl"></i>
+            </a>
         </div>
-    {% endif %}
+        <p>Powered by <a class="underline" href="https://openweathermap.org">OpenWeatherMap</a>'s API.</a></p>
+    </div>
 </body>
 </html>
