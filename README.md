@@ -2,6 +2,13 @@
 
 A small, demo app that fetches and displays real-time weather data for a specified city.
 - Uses the [OpenWeatherMap](https://home.openweathermap.org/) API as the data source.
+- Dynamically themed based on the current weather conditions.
+
+
+| ![example-1](docs/readme_assets/v2-1.png) | ![example-2](docs/readme_assets/v2-2.png) |
+| -- | -- |
+| Sunny Day | Cloudy Night |
+
 
 ---
 
@@ -17,9 +24,7 @@ A small, demo app that fetches and displays real-time weather data for a specifi
 
 ## About
 
-This project demonstrates a basic Flask web application that retrieves real-time weather data from the OpenWeatherMap API. The app features a single page with a form where users can input a city name. Upon submission, the app fetches and displays the current weather data for the specified city.
-
-Built with Flask, this project showcases how to interact with a third-party RESTful API to fetch and process data. The frontend is created using HTML and Jinja templating, while the backend handles the API requests and data display.
+This project is a small demo app that fetches and displays real-time weather data for a specified city. The app uses the [OpenWeatherMap](https://home.openweathermap.org/) API as the data source. The app is built using Python, Flask, and HTML/CSS/JS (TailwindCSS).
 
 ---
 
@@ -76,14 +81,11 @@ Built with Flask, this project showcases how to interact with a third-party REST
 
 ## Demo
 
-Successful searches pull up the current weather data for the target city and an icon representing the current weather conditions.
+Screenshots of the app in action:
 
-![demo-city-example-1](docs/readme_assets/image.png)
-![demo-city-example-2](docs/readme_assets/image-1.png)
-
-Unsuccessful searches will display an error message.
-
-![demo-error-1](docs/readme_assets/image-2.png)
+| ![example-1](docs/readme_assets/v2-1.png) | ![example-2](docs/readme_assets/v2-2.png) |
+| -- | -- |
+| Sunny Day | Cloudy Night |
 
 ---
 
