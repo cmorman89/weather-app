@@ -3,6 +3,7 @@
 A small, demo app that fetches and displays real-time weather data for a specified city.
 - Uses the [OpenWeatherMap](https://home.openweathermap.org/) API as the data source.
 - Dynamically themed based on the current weather conditions (in progress).
+- Note: Still a work-in-progress. Some colors do not update yet, and another API call must be added for location correction.
 
 
 | ![example-1](docs/readme_assets/v2-1.png) | ![example-2](docs/readme_assets/v2-2.png) |
@@ -54,7 +55,7 @@ This project is a small demo app that fetches and displays real-time weather dat
 
 5. Run the app: 
     ```
-    python demo.py
+    python app/app.py
     ```
 
 ---
