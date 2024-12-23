@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Demo Weather App</title>
+    <title>Demo Weather App - Charles Morman</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#df8a57">
@@ -12,29 +12,85 @@
     <script>
         const weatherStyle = {
             //themeID: {targetClass: list-of classes-to add-to the-element}
+            defaultStyle: {
+                "weather-main-style": "text-teal-950 placeholder-teal-950 bg-gradient-to-br from-cyan-200 to-teal-200",
+                "weather-text-accent-color": "text-teal-700",
+                "weather-bg-accent-color": "bg-teal-800/40 placeholder-teal-950",
+                "weather-bg-hover-color": "hover:bg-teal-600/30 hover:placeholder-teal-950"
+            },
             clearDay: {
                 "weather-main-style": "text-amber-950 placeholder-amber-950 bg-gradient-to-br from-orange-300 to-red-300",
                 "weather-text-accent-color": "text-amber-700",
-                "weather-bg-accent-color": "bg-amber-700/40",
-                "weather-bg-hover-color": "bg-amber-500/30 placeholder-amber-950"
+                "weather-bg-accent-color": "bg-amber-700/40 placeholder-amber-950",
+                "weather-bg-hover-color": "hover:bg-amber-500/30 hover:placeholder-amber-950"
             },
             clearNight: {
                 "weather-main-style": "text-slate-300 placeholder-slate-300 bg-gradient-to-br from-slate-900 to-black",
                 "weather-text-accent-color": "text-slate-400",
-                "weather-bg-accent-color": "bg-slate-500/40",
-                "weather-bg-hover-color": "bg-slate-500/30 placeholder-slate-300 "
+                "weather-bg-accent-color": "bg-slate-500/40 placeholder-slate-300",
+                "weather-bg-hover-color": "hover:bg-slate-500/30 hover:placeholder-slate-300"
+            },
+            cloudyDay: {
+                "weather-main-style": "text-gray-900 placeholder-gray-950 bg-gradient-to-br from-stone-200 to-gray-400",
+                "weather-text-accent-color": "text-gray-700",
+                "weather-bg-accent-color": "bg-gray-700/40 placeholder-gray-950",
+                "weather-bg-hover-color": "hover:bg-gray-500/30 hover:placeholder-gray-950"
+            },
+            cloudyNight: {
+                "weather-main-style": "text-gray-50 placeholder-gray-50 bg-gradient-to-br from-gray-700 to-gray-900",
+                "weather-text-accent-color": "text-gray-200",
+                "weather-bg-accent-color": "bg-gray-200/40 placeholder-gray-50",
+                "weather-bg-hover-color": "hover:bg-gray-400/30 hover:placeholder-gray-50"
+            },
+            rainyDay: {
+                "weather-main-style": "text-slate-900 placeholder-slate-950 bg-gradient-to-br from-gray-300 to-slate-400",
+                "weather-text-accent-color": "text-slate-700",
+                "weather-bg-accent-color": "bg-slate-600/40 placeholder-slate-950",
+                "weather-bg-hover-color": "hover:bg-slate-500/30 hover:placeholder-slate-950"
+            },
+            rainyNight: {
+                "weather-main-style": "text-slate-50 placeholder-slate-50 bg-gradient-to-br from-slate-900 to-teal-950",
+                "weather-text-accent-color": "text-slate-200",
+                "weather-bg-accent-color": "bg-slate-200/40 placeholder-slate-50",
+                "weather-bg-hover-color": "hover:bg-slate-400/30 hover:placeholder-slate-50"
             }
         };
+        
         function mapWeatherCode(weatherCode) {
             // Map weather codes from OpenWeatherMap API to themeID
+            //
+            // Day icon	    Night icon	    Description
+            // ------------------------------------------------
+            // 01d.png 	    01n.png 	    clear sky
+            // 02d.png 	    02n.png 	    few clouds
+            // 03d.png 	    03n.png 	    scattered clouds
+            // 04d.png 	    04n.png 	    broken clouds
+            // 09d.png 	    09n.png 	    shower rain
+            // 10d.png 	    10n.png 	    rain
+            // 11d.png 	    11n.png 	    thunderstorm
+            // 13d.png 	    13n.png 	    snow
+            // 50d.png 	    50n.png 	    mist
+
             if (weatherCode == "01d") {
                 return "clearDay";
             }
-            else if (weatherCode == "01n" || "02n") {
+            else if (weatherCode == "01n") {
                 return "clearNight";
             }
+            else if (weatherCode == "02d" || weatherCode == "03d" || weatherCode == "04d") {
+                return "cloudyDay";
+            }
+            else if (weatherCode == "02n" || weatherCode == "03n" || weatherCode == "04n") {
+                return "cloudyNight";
+            }
+            else if (weatherCode == "09d" || weatherCode == "10d" || weatherCode == "11d" || weatherCode == "13d" || weatherCode == "50d") {
+                return "rainyDay";
+            }
+            else if (weatherCode == "09n" || weatherCode == "10n" || weatherCode == "11n" || weatherCode == "13n" || weatherCode == "50n") {
+                return "rainyNight";
+            }
             else {
-                return "clearDay";
+                return "defaultStyle";
             }
         }
         function applyTheme(themeID) {
@@ -51,48 +107,20 @@
                 themeElements.forEach(element => {
                     for (const otherTheme in weatherStyle) {
                         if (otherTheme === themeID) continue;
-                        const oldClasses = weatherStyle[otherTheme][targetClass]?.split(" ") || [];
-                        element.classList.remove(...oldClasses);
+                        const oldClasses = weatherStyle[otherTheme][targetClass]?.split(" ");
+                        if (oldClasses.length > 0) {
+                            element.classList.remove(...oldClasses);
+                        }
                     }
                 // Add the new theme classes
                 element.classList.add(...newClasses);
-                })
+                });
             }
         }
   
     </script>
 
 </head>
-<!--
-
-
-rainy/day:
-rainy/night:
-cloudy/day:
-cloudy/night:
-snow/day:
-snow/night:
-
-sunny/clear/day:
-body:   weather-text-main-color:    text-amber-950
-        weather-text-accent-color:  text-amber-700
-body:   weather-placeholder-color:  placeholder-amber-950
-        weather-bg-accent-color:    bg-amber-700/40
-        weather-bg-hover-color:     bg-amber-500/30
-body:                               bg-gradient-to-br
-body:   weather-bg-main-grad-tl:    from-orange-300
-body:   weather-bg-main-grad-br:    to-red-300
-
-clear/night:
-body:   weather-text-main-color:    text-slate-300
-        weather-text-accent-color:  text-slate-400
-body:   weather-placeholder-color:  placeholder-slate-300
-        weather-bg-accent-color:    bg-slate-500/40
-        weather-bg-hover-color:     bg-slate-500/30
-body:                               bg-gradient-to-br
-body:   weather-bg-main-grad-tl:    from-slate-900
-body:   weather-bg-main-grad-br:    to-black
--->
 <body class="weather-main-style min-h-screen max-h-screen bg-gradient-to-br flex items-center justify-center">
 
     <!-- Weather UI -->
@@ -167,7 +195,7 @@ body:   weather-bg-main-grad-br:    to-black
 
     <script>
         // Set the theme based on weather.
-        var themeIcon = "01d";
+        var themeIcon = "defaultStyle";
         {% if weather %}
         themeIcon = `{{weather.icon}}`;
         {% endif %}
