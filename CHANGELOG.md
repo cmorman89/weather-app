@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 ### Removed
 -->
 
+[v1.1] - 2024-12-23
+### Added
+- TailwindCSS for styling the frontend.
+- Dynamically change the page theme based on the weather condition.
+
 [v1.0] - 2024-12-19
 ### Added
 - Unit tests for the backend API calls (mocked).
